@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c)  Microsoft.  All Rights Reserved.  Licensed under the Apache License, Version 2.0.  See License.txt in the project root for license information. -->
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
+    <Platform Condition="'$(Platform)' == ''">x86</Platform>
+    <PlatformTarget>x86</PlatformTarget>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{65C1B9AF-1D00-45D0-AC87-BA50A4AD4AA9}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CodeVisitor</RootNamespace>
+    <AssemblyName>CodeVisitor</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeAnalysis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.Common.1.0.1\lib\net45\Microsoft.CodeAnalysis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.CSharp.1.0.1\lib\net45\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp.Workspaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.CSharp.Workspaces.1.0.1\lib\net45\Microsoft.CodeAnalysis.CSharp.Workspaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.Workspaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.Workspaces.Common.1.0.1\lib\net452\Microsoft.CodeAnalysis.Workspaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.Workspaces.Desktop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.Workspaces.Common.1.0.1\lib\net452\Microsoft.CodeAnalysis.Workspaces.Desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Collections.Immutable, Version=1.1.36.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.1.36\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Composition.AttributedModel, Version=1.0.27.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Composition.1.0.27\lib\portable-net45+win8+wp8+wpa81\System.Composition.AttributedModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Composition.Convention, Version=1.0.27.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Composition.1.0.27\lib\portable-net45+win8+wp8+wpa81\System.Composition.Convention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Composition.Hosting, Version=1.0.27.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Composition.1.0.27\lib\portable-net45+win8+wp8+wpa81\System.Composition.Hosting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Composition.Runtime, Version=1.0.27.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Composition.1.0.27\lib\portable-net45+win8+wp8+wpa81\System.Composition.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Composition.TypedParts, Version=1.0.27.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Composition.1.0.27\lib\portable-net45+win8+wp8+wpa81\System.Composition.TypedParts.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Reflection.Metadata, Version=1.0.21.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reflection.Metadata.1.0.21\lib\portable-net45+win8\System.Reflection.Metadata.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccessorDeclarationVisitor.cs" />
+    <Compile Include="AccessorListVisitor.cs" />
+    <Compile Include="AliasQualifiedNameVisitor.cs" />
+    <Compile Include="AnonymousMethodExpressionVisitor.cs" />
+    <Compile Include="AnonymousObjectCreationExpressionVisitor.cs" />
+    <Compile Include="AnonymousObjectMemberDeclaratorVisitor.cs" />
+    <Compile Include="ArgumentListVisitor.cs" />
+    <Compile Include="ArgumentVisitor.cs" />
+    <Compile Include="ArrayCreationExpressionVisitor.cs" />
+    <Compile Include="ArrayRankSpecifierVisitor.cs" />
+    <Compile Include="ArrayTypeVisitor.cs" />
+    <Compile Include="ArrowExpressionClauseVisitor.cs" />
+    <Compile Include="AssignmentExpressionVisitor.cs" />
+    <Compile Include="AttributeArgumentListVisitor.cs" />
+    <Compile Include="AttributeArgumentVisitor.cs" />
+    <Compile Include="AttributeListVisitor.cs" />
+    <Compile Include="AttributeTargetSpecifierVisitor.cs" />
+    <Compile Include="AttributeVisitor.cs" />
+    <Compile Include="AwaitExpressionVisitor.cs" />
+    <Compile Include="BadDirectiveTriviaVisitor.cs" />
+    <Compile Include="BaseExpressionVisitor.cs" />
+    <Compile Include="BaseListVisitor.cs" />
+    <Compile Include="BinaryExpressionVisitor.cs" />
+    <Compile Include="BlockVisitor.cs" />
+    <Compile Include="BracketedArgumentListVisitor.cs" />
+    <Compile Include="BracketedParameterListVisitor.cs" />
+    <Compile Include="BreakStatementVisitor.cs" />
+    <Compile Include="CaseSwitchLabelVisitor.cs" />
+    <Compile Include="CastExpressionVisitor.cs" />
+    <Compile Include="CatchClauseVisitor.cs" />
+    <Compile Include="CatchDeclarationVisitor.cs" />
+    <Compile Include="CatchFilterClauseVisitor.cs" />
+    <Compile Include="CheckedExpressionVisitor.cs" />
+    <Compile Include="CheckedStatementVisitor.cs" />
+    <Compile Include="ClassDeclarationVisitor.cs" />
+    <Compile Include="ClassOrStructConstraintVisitor.cs" />
+    <Compile Include="CompilationUnitVisitor.cs" />
+    <Compile Include="ConditionalAccessExpressionVisitor.cs" />
+    <Compile Include="ConditionalExpressionVisitor.cs" />
+    <Compile Include="ConstructorConstraintVisitor.cs" />
+    <Compile Include="ConstructorDeclarationVisitor.cs" />
+    <Compile Include="ConstructorInitializerVisitor.cs" />
+    <Compile Include="ContinueStatementVisitor.cs" />
+    <Compile Include="ConversionOperatorDeclarationVisitor.cs" />
+    <Compile Include="ConversionOperatorMemberCrefVisitor.cs" />
+    <Compile Include="CrefBracketedParameterListVisitor.cs" />
+    <Compile Include="CrefParameterListVisitor.cs" />
+    <Compile Include="CrefParameterVisitor.cs" />
+    <Compile Include="DefaultExpressionVisitor.cs" />
+    <Compile Include="DefaultSwitchLabelVisitor.cs" />
+    <Compile Include="DefineDirectiveTriviaVisitor.cs" />
+    <Compile Include="DelegateDeclarationVisitor.cs" />
+    <Compile Include="DestructorDeclarationVisitor.cs" />
+    <Compile Include="DocumentationCommentTriviaVisitor.cs" />
+    <Compile Include="DoStatementVisitor.cs" />
+    <Compile Include="ElementAccessExpressionVisitor.cs" />
+    <Compile Include="ElementBindingExpressionVisitor.cs" />
+    <Compile Include="ElifDirectiveTriviaVisitor.cs" />
+    <Compile Include="ElseClauseVisitor.cs" />
+    <Compile Include="ElseDirectiveTriviaVisitor.cs" />
+    <Compile Include="EmptyStatementVisitor.cs" />
+    <Compile Include="EndIfDirectiveTriviaVisitor.cs" />
+    <Compile Include="EndRegionDirectiveTriviaVisitor.cs" />
+    <Compile Include="EnumDeclarationVisitor.cs" />
+    <Compile Include="EnumMemberDeclarationVisitor.cs" />
+    <Compile Include="EqualsValueClauseVisitor.cs" />
+    <Compile Include="ErrorDirectiveTriviaVisitor.cs" />
+    <Compile Include="EventDeclarationVisitor.cs" />
+    <Compile Include="EventFieldDeclarationVisitor.cs" />
+    <Compile Include="ExplicitInterfaceSpecifierVisitor.cs" />
+    <Compile Include="ExpressionStatementVisitor.cs" />
+    <Compile Include="ExternAliasDirectiveVisitor.cs" />
+    <Compile Include="FieldDeclarationVisitor.cs" />
+    <Compile Include="FinallyClauseVisitor.cs" />
+    <Compile Include="FixedStatementVisitor.cs" />
+    <Compile Include="ForEachStatementVisitor.cs" />
+    <Compile Include="ForStatementVisitor.cs" />
+    <Compile Include="FromClauseVisitor.cs" />
+    <Compile Include="GenericNameVisitor.cs" />
+    <Compile Include="GlobalStatementVisitor.cs" />
+    <Compile Include="GotoStatementVisitor.cs" />
+    <Compile Include="GroupClauseVisitor.cs" />
+    <Compile Include="IdentifierNameVisitor.cs" />
+    <Compile Include="IfDirectiveTriviaVisitor.cs" />
+    <Compile Include="IfStatementVisitor.cs" />
+    <Compile Include="ImplicitArrayCreationExpressionVisitor.cs" />
+    <Compile Include="ImplicitElementAccessVisitor.cs" />
+    <Compile Include="IncompleteMemberVisitor.cs" />
+    <Compile Include="IndexerDeclarationVisitor.cs" />
+    <Compile Include="IndexerMemberCrefVisitor.cs" />
+    <Compile Include="InitializerExpressionVisitor.cs" />
+    <Compile Include="InterfaceDeclarationVisitor.cs" />
+    <Compile Include="InterpolatedStringExpressionVisitor.cs" />
+    <Compile Include="InterpolatedStringTextVisitor.cs" />
+    <Compile Include="InterpolationAlignmentClauseVisitor.cs" />
+    <Compile Include="InterpolationFormatClauseVisitor.cs" />
+    <Compile Include="InterpolationVisitor.cs" />
+    <Compile Include="InvocationExpressionVisitor.cs" />
+    <Compile Include="JoinClauseVisitor.cs" />
+    <Compile Include="JoinIntoClauseVisitor.cs" />
+    <Compile Include="LabeledStatementVisitor.cs" />
+    <Compile Include="LetClauseVisitor.cs" />
+    <Compile Include="LineDirectiveTriviaVisitor.cs" />
+    <Compile Include="LiteralExpressionVisitor.cs" />
+    <Compile Include="LocalDeclarationStatementVisitor.cs" />
+    <Compile Include="LockStatementVisitor.cs" />
+    <Compile Include="MakeRefExpressionVisitor.cs" />
+    <Compile Include="MemberAccessExpressionVisitor.cs" />
+    <Compile Include="MemberBindingExpressionVisitor.cs" />
+    <Compile Include="MethodDeclarationVisitor.cs" />
+    <Compile Include="NameColonVisitor.cs" />
+    <Compile Include="NameEqualsVisitor.cs" />
+    <Compile Include="NameMemberCrefVisitor.cs" />
+    <Compile Include="NamespaceDeclarationVisitor.cs" />
+    <Compile Include="NullableTypeVisitor.cs" />
+    <Compile Include="ObjectCreationExpressionVisitor.cs" />
+    <Compile Include="OmittedArraySizeExpressionVisitor.cs" />
+    <Compile Include="OmittedTypeArgumentVisitor.cs" />
+    <Compile Include="OperatorDeclarationVisitor.cs" />
+    <Compile Include="OperatorMemberCrefVisitor.cs" />
+    <Compile Include="OrderByClauseVisitor.cs" />
+    <Compile Include="OrderingVisitor.cs" />
+    <Compile Include="ParameterListVisitor.cs" />
+    <Compile Include="ParameterVisitor.cs" />
+    <Compile Include="ParenthesizedExpressionVisitor.cs" />
+    <Compile Include="ParenthesizedLambdaExpressionVisitor.cs" />
+    <Compile Include="PointerTypeVisitor.cs" />
+    <Compile Include="PostfixUnaryExpressionVisitor.cs" />
+    <Compile Include="PragmaChecksumDirectiveTriviaVisitor.cs" />
+    <Compile Include="PragmaWarningDirectiveTriviaVisitor.cs" />
+    <Compile Include="PredefinedTypeVisitor.cs" />
+    <Compile Include="PrefixUnaryExpressionVisitor.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyDeclarationVisitor.cs" />
+    <Compile Include="QualifiedCrefVisitor.cs" />
+    <Compile Include="QualifiedNameVisitor.cs" />
+    <Compile Include="QueryBodyVisitor.cs" />
+    <Compile Include="QueryContinuationVisitor.cs" />
+    <Compile Include="QueryExpressionVisitor.cs" />
+    <Compile Include="ReferenceDirectiveTriviaVisitor.cs" />
+    <Compile Include="RefTypeExpressionVisitor.cs" />
+    <Compile Include="RefValueExpressionVisitor.cs" />
+    <Compile Include="RegionDirectiveTriviaVisitor.cs" />
+    <Compile Include="ReturnStatementVisitor.cs" />
+    <Compile Include="SelectClauseVisitor.cs" />
+    <Compile Include="SimpleBaseTypeVisitor.cs" />
+    <Compile Include="SimpleLambdaExpressionVisitor.cs" />
+    <Compile Include="SizeOfExpressionVisitor.cs" />
+    <Compile Include="SkippedTokensTriviaVisitor.cs" />
+    <Compile Include="StackAllocArrayCreationExpressionVisitor.cs" />
+    <Compile Include="StructDeclarationVisitor.cs" />
+    <Compile Include="SwitchSectionVisitor.cs" />
+    <Compile Include="SwitchStatementVisitor.cs" />
+    <Compile Include="ThisExpressionVisitor.cs" />
+    <Compile Include="ThrowStatementVisitor.cs" />
+    <Compile Include="TryStatementVisitor.cs" />
+    <Compile Include="TypeArgumentListVisitor.cs" />
+    <Compile Include="TypeConstraintVisitor.cs" />
+    <Compile Include="TypeCrefVisitor.cs" />
+    <Compile Include="TypeOfExpressionVisitor.cs" />
+    <Compile Include="TypeParameterConstraintClauseVisitor.cs" />
+    <Compile Include="TypeParameterListVisitor.cs" />
+    <Compile Include="TypeParameterVisitor.cs" />
+    <Compile Include="UndefDirectiveTriviaVisitor.cs" />
+    <Compile Include="UnsafeStatementVisitor.cs" />
+    <Compile Include="UsingDirectiveVisitor.cs" />
+    <Compile Include="UsingStatementVisitor.cs" />
+    <Compile Include="VariableDeclarationVisitor.cs" />
+    <Compile Include="VariableDeclaratorVisitor.cs" />
+    <Compile Include="WarningDirectiveTriviaVisitor.cs" />
+    <Compile Include="WhereClauseVisitor.cs" />
+    <Compile Include="WhileStatementVisitor.cs" />
+    <Compile Include="XmlCDataSectionVisitor.cs" />
+    <Compile Include="XmlCommentVisitor.cs" />
+    <Compile Include="XmlCrefAttributeVisitor.cs" />
+    <Compile Include="XmlElementEndTagVisitor.cs" />
+    <Compile Include="XmlElementStartTagVisitor.cs" />
+    <Compile Include="XmlElementVisitor.cs" />
+    <Compile Include="XmlEmptyElementVisitor.cs" />
+    <Compile Include="XmlNameAttributeVisitor.cs" />
+    <Compile Include="XmlNameVisitor.cs" />
+    <Compile Include="XmlPrefixVisitor.cs" />
+    <Compile Include="XmlProcessingInstructionVisitor.cs" />
+    <Compile Include="XmlTextAttributeVisitor.cs" />
+    <Compile Include="XmlTextVisitor.cs" />
+    <Compile Include="YieldStatementVisitor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
